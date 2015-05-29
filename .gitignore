@@ -27,3 +27,8 @@
 *.out
 *.app
 VirtualShield/VS/
+VirtualShield/examples/scroll-demo/Visual Micro/
+*.opensdf
+*.sdf
+*.vcxproj
+*.filters
