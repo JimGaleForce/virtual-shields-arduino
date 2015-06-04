@@ -21,10 +21,14 @@ void RGBGrid::setPixel(int x, int y, ARGB color)
 	RGBStrip::SetPixel(pixel, (BYTE) color.red, (BYTE) color.green, (BYTE) color.blue);
 }
 
+void RGBGrid::begin() {
+  RGBStrip::begin(this->width * this->height);
+}
+
 int RGBGrid::XYtoPixel(int x, int y) {
     int ix = width-1-x;
 	int iy = height-1-y;
-	int pixel = ((int)(iy/2))*(width*2) + (iy%2 == 0 ? ix : 15-ix);
+	int pixel = ((int)(iy/2))*(width*2) + (iy%2 == 0 ? ix : (width*2-1)-ix);
 	return pixel;
 }
 /*

@@ -33,21 +33,23 @@ extern "C" {
 
 const int stripClock = 2;
 const int stripData = 3;
-const int stripLen = 48;
 
 BYTE r0, b0, g0, r, g, b;
 
 // Array of stored Pixel values
-PIXEL_VALUES Pixels[stripLen];
+PIXEL_VALUES* Pixels;
 
-void RGBStrip::begin()
+void RGBStrip::begin(int stripLen)
 {
+    this->stripLen = stripLen;
+    Pixels = new PIXEL_VALUES[stripLen];
+
     // Set pins to outputs
     pinMode(stripClock, OUTPUT);
     pinMode(stripData, OUTPUT);
     digitalWrite(stripClock, LOW);
     digitalWrite(stripData, LOW);
-	clear();
+    clear();
 }
 
 void RGBStrip::clear()

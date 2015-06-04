@@ -11,6 +11,7 @@ class RGBGrid : public RGBStrip {
 	public:
 	    RGBGrid(int width, int height);
 		void setPixel(int x, int y, ARGB color);
+          void begin();
 	private:
 		int width;
 		int height;

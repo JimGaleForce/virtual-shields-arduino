@@ -37,7 +37,7 @@ typedef struct _PIXEL_VALUES {
 
 class RGBStrip {
 	public:
-		void begin();
+		void begin(int stripLen);
 		void setAll(BYTE r, BYTE g, BYTE b);
 		void setDim(int dim);
 		void setSpeed(int speed);
@@ -51,6 +51,7 @@ class RGBStrip {
 private:
 		int speed = 0;
 		int dim = 1;
+                int stripLen;
 	
 		void ShiftPixel(int pixel);
 };
