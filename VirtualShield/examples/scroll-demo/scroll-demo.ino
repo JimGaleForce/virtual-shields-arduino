@@ -37,14 +37,14 @@ void doChar(char* pack, unsigned int length, struct _Character *chr) {
     for (unsigned int i = 5; i < length; i++)
     {
         unsigned int bitValue = hex.indexOf(pack[i]);
-        Serial.print("...");
-        Serial.print(bitValue);
+        //Serial.print("...");
+        //Serial.print(bitValue);
         row = 0;
         for (unsigned int xrow = 0; xrow<4; xrow++) {
             chr->dots[column][row] = (bitValue & 0x0001) == 0x0001;
             bitValue = bitValue >> 1;
-            Serial.print(",");
-            Serial.print(bitValue);
+            //Serial.print(",");
+            //Serial.print(bitValue);
             if (++row >= gridrows) {
                 ++column;
                 break;
@@ -59,16 +59,26 @@ void refresh(ShieldEvent* shieldEvent)
     struct _Character chr;
     Serial.print("!");
     doChar("!0389081060C50340340C50060081", 29, &chr);
-    
-    for (unsigned int col = 0; col < chr.height; col++) {
-      for (unsigned int row = 0; row < chr.width; row++) {
+    //
+    //for (unsigned int col = 0; col < chr.height; col++) {
+    //  for (unsigned int row = 0; row < chr.width; row++) {
+    //     unsigned int val = 0;
+    //     if (chr.dots[col][row]) {
+    //       val = 255;
+    //     }
+    //     strip.setPixel(col, row, ARGB(val,val,val)); 
+    //  }
+    //}
+
+    for (unsigned int row = 0; row < chr.width; row++) {
+      for (unsigned int col = 0; col < chr.height; col++) {
          unsigned int val = 0;
-         if (chr.dots[col][row]) {
-           val = 255;
-         }
-         strip.setPixel(col, row, ARGB(val,val,val)); 
+         Serial.print(chr.dots[col][row] ? "X" : ".");
       }
+        Serial.println("");
     }
+
+
 /*
     for (int col=0; col<gridcolumns; col++) {
       for (int row=0;row<gridrows; row++) {
@@ -78,7 +88,7 @@ void refresh(ShieldEvent* shieldEvent)
       }
     }
 */    
-    strip.ShiftAllPixels();
+    //strip.ShiftAllPixels();
 }
 
 void setup()

@@ -32,3 +32,5 @@ VirtualShield/examples/scroll-demo/Visual Micro/
 *.sdf
 *.vcxproj
 *.filters
+VirtualShield/examples/scroll-demo/ipch/testapp-354bf034/testapp-ea7a3a4d.ipch
+*.GhostDoc.xml
