@@ -120,6 +120,8 @@ public:
 	int parseToHash(const char* text, unsigned int *hash, int hashCount, char separator = ' ', unsigned int length = -1);
 	static unsigned int hash(const char* s, unsigned int len = -1, unsigned int seed = 0);
 
+    void setStream(Stream* stream);
+
 protected:
 	int sendFlashStringOnSerial(const char* flashStringAdr, int start = -1, bool encode = false) const;
 

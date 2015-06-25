@@ -125,6 +125,11 @@ void VirtualShield::setPort(int port)
 	}
 }
 
+void VirtualShield::setStream(Stream* stream)
+{
+    _VShieldSerial = stream;
+}
+
 /// <summary>
 /// Begins the specified bit rate.
 /// </summary>
