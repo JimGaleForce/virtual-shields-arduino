@@ -44,6 +44,9 @@ extern "C" {
 #define VIRTUAL_SERIAL_PORT1 Serial
 #endif
 
+//#define debugSerial
+//#define debugSerialIn
+
 static const int DEFAULT_LENGTH = -1;
 static const int SERIAL_ERROR = -1;
 static const int SERIAL_SUCCESS = 0;
