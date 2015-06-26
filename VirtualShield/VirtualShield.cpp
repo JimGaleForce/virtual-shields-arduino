@@ -125,9 +125,14 @@ void VirtualShield::setPort(int port)
 	}
 }
 
-void VirtualShield::setStream(Stream* stream)
+/// <summary>
+/// Sets the stream for in and out, allows for externally created streams like wifi, ethernet. Should be called before .begin()
+/// </summary>
+/// <param name="port">The stream.</param>
+void VirtualShield::setStream(Stream* stream, bool startWithBitrate)
 {
     _VShieldSerial = stream;
+    this->startWithBitrate = startWithBitrate;
 }
 
 /// <summary>
@@ -136,8 +141,12 @@ void VirtualShield::setStream(Stream* stream)
 /// <param name="bitRate">The bit rate to use for the virtual shield serial connection.</param>
 void VirtualShield::begin(long bitRate)
 {
-    reinterpret_cast<HardwareSerial *>(_VShieldSerial)->begin(bitRate);
-	delay(500);
+    if (this->startWithBitrate)
+    {
+        reinterpret_cast<HardwareSerial *>(_VShieldSerial)->begin(bitRate);
+    }
+
+    delay(500);
     flush();
     sendStart();
 

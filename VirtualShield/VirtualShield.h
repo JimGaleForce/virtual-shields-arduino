@@ -120,7 +120,7 @@ public:
 	int parseToHash(const char* text, unsigned int *hash, int hashCount, char separator = ' ', unsigned int length = -1);
 	static unsigned int hash(const char* s, unsigned int len = -1, unsigned int seed = 0);
 
-    void setStream(Stream* stream);
+    void setStream(Stream* stream, bool startWithBitrate = false);
 
 protected:
 	int sendFlashStringOnSerial(const char* flashStringAdr, int start = -1, bool encode = false) const;
@@ -135,6 +135,7 @@ private:
 	int nextId = 1;
 	ShieldEvent recentEvent;
 	bool allowAutoBlocking = true;
+    bool startWithBitrate = true;
 
 	void sendPingBack(ShieldEvent* shieldEvent);
     void sendStart();
